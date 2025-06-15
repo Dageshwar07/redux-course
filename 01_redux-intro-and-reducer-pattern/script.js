@@ -41,8 +41,8 @@
 // reduxState = reducer(reduxState, { type: 'age/decrementBy', payload: 5 });
 // console.log(reduxState);
 
-// const { createStore } = window.Redux;
-import { createStore } from 'redux'
+const { createStore } = window.Redux;
+// import { createStore } from 'redux'
 
 const initialState = {
   post: 0,
@@ -53,7 +53,9 @@ const initialState = {
 const INCREMENT = 'post/increment';
 const DECREMENT = 'post/decrement';
 const INCREASE_BY = 'post/increaseBy';
+const AGE_INCREASE_BY = 'age/increaseBy';
 const DECREASE_BY = 'post/decreaseBy';
+const AGE_DECREASE_BY = 'age/decreaseBy';
 
 function reducer(state = initialState, action) {
   switch (action.type) {
@@ -65,6 +67,10 @@ function reducer(state = initialState, action) {
       return { ...state, post: state.post + action.payload };
     case DECREASE_BY:
       return { ...state, post: state.post - action.payload };
+    case AGE_INCREASE_BY:
+      return { ...state, age: state.age + action.payload };
+    case AGE_DECREASE_BY:
+      return { ...state, age: state.age - action.payload };
     default:
       return state;
   }
@@ -73,9 +79,11 @@ function reducer(state = initialState, action) {
 // Setup Redux DevTools extension
 const store = createStore(
   reducer,
-  // window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
 );
 
+// Log initial state
+console.log('Initial State:', store.getState());
 store.subscribe(() => {
   console.log('State:', store.getState());
 });
@@ -85,3 +93,5 @@ store.dispatch({ type: INCREMENT });
 store.dispatch({ type: DECREMENT });
 store.dispatch({ type: INCREASE_BY, payload: 15 });
 store.dispatch({ type: DECREASE_BY, payload: 5 });
+store.dispatch({ type: AGE_INCREASE_BY, payload: 4 });
+store.dispatch({ type: AGE_DECREASE_BY, payload: 2 });
