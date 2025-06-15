@@ -1,3 +1,46 @@
+
+let reduxState = {
+  post: 0,
+  name: 'dageshwar das',
+  age: 26,
+};
+
+function reducer(state = reduxState, action) {
+  if (action.type === 'post/increment') {
+    return { ...state, post: state.post + 1 };
+  } else if (action.type === 'post/decrement') {
+    return { ...state, post: state.post - 1 };
+  } else if (action.type === 'post/incrementBy') {
+    return { ...state, post: state.post + action.payload };
+  }
+  else if (action.type === 'post/incrementBy') {
+    return { ...state, post: state.post + action.payload };
+  } else if (action.type === 'age/incrementBy') {
+    return { ...state, age: state.age + action.payload };
+  
+  } else if (action.type === 'age/decrementBy') {
+    return { ...state, age: state.age - action.payload };
+  }
+
+  return state;
+}
+
+// What Redux will Do //
+
+console.log(reduxState);
+reduxState = reducer(reduxState, { type: 'post/increment' });
+console.log(reduxState);
+reduxState = reducer(reduxState, { type: 'post/increment' });
+console.log(reduxState);
+reduxState = reducer(reduxState, { type: 'post/decrement' });
+console.log(reduxState);
+reduxState = reducer(reduxState, { type: 'post/incrementBy', payload: 10 });
+console.log(reduxState);
+reduxState = reducer(reduxState, { type: 'age/incrementBy', payload: 20 });
+console.log(reduxState);
+reduxState = reducer(reduxState, { type: 'age/decrementBy', payload: 5 });
+console.log(reduxState);
+
 // import { createStore } from 'redux'
 
 // const initialState = {
@@ -41,37 +84,3 @@
 // store.dispatch({ type: DECREASE_BY, payload: 5 })
 
 
-
-let reduxState = {
-  post: 0,
-  name: 'dageshwar das',
-  age: 26,
-};
-
-function reducer(state = reduxState, action) {
-  if (action.type === 'post/increment') {
-    return { ...state, post: state.post + 1 };
-  } else if (action.type === 'post/decrement') {
-    return { ...state, post: state.post - 1 };
-  } else if (action.type === 'post/incrementBy') {
-    return { ...state, post: state.post + action.payload };
-  }
-
-  return state;
-}
-
-// What Redux will Do //
-
-console.log(reduxState);
-reduxState = reducer(reduxState, { type: 'post/increment' });
-console.log(reduxState);
-reduxState = reducer(reduxState, { type: 'post/increment' });
-console.log(reduxState);
-reduxState = reducer(reduxState, { type: 'post/decrement' });
-console.log(reduxState);
-reduxState = reducer(reduxState, { type: 'post/incrementBy', payload: 10 });
-console.log(reduxState);
-reduxState = reducer(reduxState, { type: 'post/incrementBy', payload: 20 });
-console.log(reduxState);
-reduxState = reducer(reduxState, { type: 'post/incrementBy', payload: 10 });
-console.log(reduxState);
