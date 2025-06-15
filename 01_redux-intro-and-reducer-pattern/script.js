@@ -41,7 +41,8 @@
 // reduxState = reducer(reduxState, { type: 'age/decrementBy', payload: 5 });
 // console.log(reduxState);
 
-const { createStore } = window.Redux;
+// const { createStore } = window.Redux;
+import { createStore } from 'redux'
 
 const initialState = {
   post: 0,
@@ -72,7 +73,7 @@ function reducer(state = initialState, action) {
 // Setup Redux DevTools extension
 const store = createStore(
   reducer,
-  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+  // window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
 );
 
 store.subscribe(() => {
