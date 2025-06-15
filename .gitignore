@@ -1,25 +1,10 @@
-node_modules/
+# Ignore all node_modules folders everywhere
+**/node_modules/
+
+# Extra good practice
+dist/
+build/
+.vscode/
+.parcel-cache/
 .DS_Store
 .env
-dist
-coverage
-.vscode
-.idea
-*.log
-*.tmp
-*.bak
-*.swp
-*.swo
-*.orig
-*.cache
-*.pid
-*.seed
-*.tgz
-*.zip
-*.tar.gz
-*.rar
-*.7z
-*.gz
-*.bz2
-*.tgz
-*.zip
